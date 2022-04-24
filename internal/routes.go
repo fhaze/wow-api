@@ -18,5 +18,5 @@ func Assign(e *echo.Echo) {
 	V1Chars := v1Users.Group("/:userId/chars")
 	V1Chars.GET("", GetCharacters)
 	V1Chars.POST("", PostCharacter)
-	V1Chars.DELETE(":characterId", DeleteCharacter)
+	V1Chars.DELETE("/:characterId", DeleteCharacter)
 }
