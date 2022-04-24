@@ -51,9 +51,10 @@ func PutUser(c echo.Context) error {
 	idStr := c.Param("id")
 	if id, err := strconv.Atoi(idStr); err == nil {
 		if u, found := users[id]; found {
-			if err = c.Bind(u); err != nil {
+			if err = c.Bind(&u); err != nil {
 				return err
 			}
+			users[id] = u
 			c.JSON(http.StatusOK, u)
 		}
 	}
